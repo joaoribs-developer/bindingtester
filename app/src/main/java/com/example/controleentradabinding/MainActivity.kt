@@ -4,6 +4,7 @@ import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.Button
 import com.example.controleentradabinding.databinding.ActivityMainBinding
 
 private lateinit var binding : ActivityMainBinding
@@ -14,13 +15,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
 
-
+    override fun onStart() {
+        super.onStart()
         binding.entrou.setOnClickListener {
             contador++
             binding.textView.text = "Pessoas presentes: $contador"
             if (contador == 30){
                 binding.entrou.isClickable = false
+
                 binding.textView.text = "Casa lotada, impossivel entrar!"
 
 
@@ -41,7 +45,8 @@ class MainActivity : AppCompatActivity() {
             }
             binding.entrou.isClickable = true
         }
-    }}
+    }
+}
 
 
 
